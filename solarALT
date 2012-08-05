@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# solarALT
+# usage: nvalt-solarize [light | dark]
+# Author: Dave Snigier
+# License: Covered under the make Dave smile license
+# if you use this code, please tell me about 
+
+case $1 in
+	'dark')
+		osascript -e 'tell application "nvALT" to quit'
+		defaults write net.elasticthreads.nv ColorScheme 2
+		defaults write net.elasticthreads.nv BackgroundTextColor "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016301 84046666 666683e6 73823c83 b38e013e 835a8723 3e0186>"
+		defaults write net.elasticthreads.nv ForegroundTextColor "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016301 84046666 666683bc 93e13e83 1177023f 83ce5004 3f0186>"
+		defaults write net.elasticthreads.nv SearchTermHighlightColor "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016301 84046666 666683b2 4d213d83 92f5233e 83be174b 3e0186>"
+		osascript -e 'tell application "nvALT" to launch'
+		;;
+	'light')
+		osascript -e 'tell application "nvALT" to quit'
+		defaults write net.elasticthreads.nv ColorScheme 2
+		defaults write net.elasticthreads.nv BackgroundTextColor "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016301 84046666 6666838f 4b7d3f83 d03b753f 8306335d 3f0186>"
+		defaults write net.elasticthreads.nv ForegroundTextColor "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016301 84046666 666683bc 93e13e83 1177023f 83ce5004 3f0186>"
+		defaults write net.elasticthreads.nv SearchTermHighlightColor "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016301 84046666 6666833a 866a3f83 dad7633f 83583d4c 3f0186>"
+		osascript -e 'tell application "nvALT" to launch'
+		;;
+	*)
+		echo "Usage: $(basename $0) [light|dark]"
+		echo "Switches nvALT color schemes between Solarized Light and Dark"
+		;;
+esac
